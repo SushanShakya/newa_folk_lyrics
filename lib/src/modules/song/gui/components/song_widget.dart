@@ -16,8 +16,8 @@ class SongWidget extends StatelessWidget {
     return Container(
       height: 80,
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(4),
+        color: Colors.white,
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,

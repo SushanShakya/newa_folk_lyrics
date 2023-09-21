@@ -39,6 +39,7 @@ dependencies:
   path_provider: ^2.1.1
   warped_bloc: ^0.0.10
   cached_network_image: ^3.2.3
+  font_awesome_flutter: ^10.5.0
 
 dev_dependencies:
   flutter_test:
@@ -83,9 +84,9 @@ flutter:
       fonts:
         - asset: fonts/Montserrat-Regular.ttf
 
-    - family: Alba
+    - family: Londrina
       fonts:
-        - asset: fonts/alba.ttf
+        - asset: fonts/londrina.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
