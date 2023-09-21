@@ -13,6 +13,12 @@ class SongResponse {
     required this.lyrics,
   });
 
+  String? get thumbnailLink {
+    if (thumbnail != "") return thumbnail;
+    if (youtubeHash == "") return null;
+    return "https://i.ytimg.com/vi/$youtubeHash/maxresdefault.jpg";
+  }
+
   SongResponse copyWith({
     String? name,
     String? youtubeHash,

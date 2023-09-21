@@ -16,4 +16,19 @@ class ImageComponent {
       fit: BoxFit.cover,
     );
   }
+
+  static Widget createImage({
+    String? image,
+  }) {
+    if (image == null) {
+      return CachedNetworkImage(
+        imageUrl: image!,
+        fit: BoxFit.cover,
+      );
+    }
+    return Image.network(
+      image,
+      fit: BoxFit.cover,
+    );
+  }
 }

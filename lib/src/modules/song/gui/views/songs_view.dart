@@ -48,45 +48,52 @@ class SongsBody extends StatelessWidget {
         children: [
           Positioned.fill(child: buildBackground(context)),
           Positioned.fill(
-            child: ListView(
-              padding: const EdgeInsets.all(20),
-              children: [
-                const SizedBox(height: 300),
-                Text(
-                  "Newa Folk\nLyrics",
-                  style: TextStyle(
-                    fontFamily: "Londrina",
-                    fontSize: 50,
-                    fontWeight: FontWeight.w600,
-                    shadows: [
-                      BoxShadow(
-                        color: Colors.grey.shade300,
-                        blurRadius: 10,
-                        spreadRadius: 10,
-                        offset: const Offset(5, 5),
-                      ),
-                    ],
+            child: RefreshIndicator(
+              onRefresh: () async {
+                context.read<ContentCubit>().forceFetchContent();
+                await Future.delayed(const Duration(seconds: 1));
+              },
+              child: ListView(
+                padding: const EdgeInsets.all(20),
+                children: [
+                  const SizedBox(height: 300),
+                  Text(
+                    "Newa Folk\nLyrics",
+                    style: TextStyle(
+                      fontFamily: "Londrina",
+                      fontSize: 50,
+                      fontWeight: FontWeight.w600,
+                      shadows: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 10,
+                          spreadRadius: 10,
+                          offset: const Offset(5, 5),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 50),
-                BlocBuilder<ContentCubit, BlocState>(
-                  builder: defaultBuilder<ContentLoaded, void>(onData: (state) {
-                    return SongsListingWidget(
-                      onTap: (i) {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (c) => LyricsView(song: state.data[i]),
-                          ),
-                        );
-                      },
-                      songs: List.generate(
-                        state.data.length,
-                        (i) => adapter.convert(state.data[i]),
-                      ),
-                    );
-                  }),
-                ),
-              ],
+                  const SizedBox(height: 50),
+                  BlocBuilder<ContentCubit, BlocState>(
+                    builder:
+                        defaultBuilder<ContentLoaded, void>(onData: (state) {
+                      return SongsListingWidget(
+                        onTap: (i) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (c) => LyricsView(song: state.data[i]),
+                            ),
+                          );
+                        },
+                        songs: List.generate(
+                          state.data.length,
+                          (i) => adapter.convert(state.data[i]),
+                        ),
+                      );
+                    }),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

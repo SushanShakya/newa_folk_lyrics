@@ -6,6 +6,7 @@ class SongAdapter {
     return SongViewModel(
       name: song.name,
       singer: song.singer,
+      image: song.thumbnailLink,
     );
   }
 }
