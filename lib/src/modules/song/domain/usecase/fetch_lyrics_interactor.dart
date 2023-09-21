@@ -21,7 +21,8 @@ class FetchLyricsInteractor {
 
   Future<Map<String, dynamic>?> fetchFromDb(IStorage storage) async {
     final res = await storage.fetch();
-    return res as Map<String, dynamic>?;
+    if (res == null) return null;
+    return jsonDecode(res);
   }
 
   Future<Map<String, dynamic>> fetchLyrics(String filename) async {
