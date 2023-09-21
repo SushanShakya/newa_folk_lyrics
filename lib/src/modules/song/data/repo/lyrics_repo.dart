@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 class LyricsRepo {
@@ -10,6 +12,6 @@ class LyricsRepo {
 
   Future<Map<String, dynamic>> fetchLyrics(String filename) async {
     final res = await dio.get("/lyrics/$filename");
-    return res.data as Map<String, dynamic>;
+    return jsonDecode(res.data) as Map<String, dynamic>;
   }
 }

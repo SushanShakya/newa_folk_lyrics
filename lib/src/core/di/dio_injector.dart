@@ -6,7 +6,7 @@ void injectDio() {
     () => Dio(
       BaseOptions(
         baseUrl:
-            "https://raw.githubusercontent.com/SushanShakya/newa_folk_lyrics/main",
+            "https://raw.githubusercontent.com/SushanShakya/newa_folk_lyrics/api_connection",
       ),
     ),
   );

@@ -14,7 +14,7 @@ class SongsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => g<ContentCubit>(),
+      create: (context) => g<ContentCubit>()..fetchContent(),
       child: const SongsBody(),
     );
   }

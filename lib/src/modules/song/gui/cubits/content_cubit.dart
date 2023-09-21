@@ -28,11 +28,7 @@ class ContentCubit extends AsyncCubit {
   fetchContent() async {
     handleDefaultStates(() async {
       final content = await interactor.fetchContent();
-      emit(
-        ContentLoaded(
-          data: _convert(content),
-        ),
-      );
+      emit(ContentLoaded(data: _convert(content)));
     });
   }
 

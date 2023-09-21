@@ -134,14 +134,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_blob:
-    dependency: "direct main"
-    description:
-      name: flutter_blob
-      sha256: ed1e43efcb955fd0a73dd98b0e5e8c8ec2c547218af87861f3f1c44845397d03
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
   flutter_bloc:
     dependency: "direct main"
     description:

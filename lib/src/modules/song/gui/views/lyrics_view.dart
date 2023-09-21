@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newa_folk_lyrics/src/core/di/locator.dart';
+import 'package:newa_folk_lyrics/src/modules/common/gui/components/tap_effect.dart';
 
 import 'package:newa_folk_lyrics/src/modules/song/data/model/compact_song_response.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/adapter/lyrics_adapter.dart';
@@ -64,6 +65,7 @@ class _LyricsViewState extends State<LyricsView> {
       body: BlocBuilder<LyricsCubit, BlocState>(
         bloc: cubit,
         builder: defaultBuilder<LyricsLoaded, void>(onData: (state) {
+          final song = state.data;
           final lyricsTypes = state.data.lyrics;
           return DefaultTabController(
             length: lyricsTypes.length,
@@ -89,25 +91,24 @@ class _LyricsViewState extends State<LyricsView> {
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    const Expanded(
+                                    Expanded(
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Rajamati Kumati',
-                                            maxLines: 1,
-                                            style: TextStyle(
+                                            widget.song.name,
+                                            style: const TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.w600,
                                               fontSize: 24,
                                             ),
                                           ),
                                           Text(
-                                            "Shrestha",
+                                            widget.song.singer,
                                             maxLines: 1,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               color: Colors.black,
                                             ),
@@ -116,26 +117,31 @@ class _LyricsViewState extends State<LyricsView> {
                                       ),
                                     ),
                                     Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 10.0),
-                                      child: Container(
-                                        height: 60,
-                                        width: 60,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.white,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.grey,
-                                              blurRadius: 5,
-                                              spreadRadius: 2,
-                                            ),
-                                          ],
-                                        ),
-                                        child: const Icon(
-                                          FontAwesomeIcons.youtube,
-                                          size: 30,
-                                          color: Color(0xffcd201f),
+                                      padding: const EdgeInsets.only(
+                                        bottom: 10.0,
+                                        left: 16,
+                                      ),
+                                      child: TapEffect(
+                                        onTap: () {},
+                                        child: Container(
+                                          height: 60,
+                                          width: 60,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey,
+                                                blurRadius: 5,
+                                                spreadRadius: 2,
+                                              ),
+                                            ],
+                                          ),
+                                          child: const Icon(
+                                            FontAwesomeIcons.youtube,
+                                            size: 30,
+                                            color: Color(0xffcd201f),
+                                          ),
                                         ),
                                       ),
                                     ),

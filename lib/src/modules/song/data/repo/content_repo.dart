@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 class ContentRepo {
@@ -10,6 +12,7 @@ class ContentRepo {
 
   Future<List> fetchContent() async {
     final res = await dio.get('/lyrics_contents/content.json');
-    return res.data as List;
+    print(res.data.runtimeType);
+    return jsonDecode(res.data) as List;
   }
 }
