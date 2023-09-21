@@ -10,21 +10,23 @@ class FetchLyricsInteractor {
     required this.repo,
   });
 
-  Future<Map<String, dynamic>> _fetchFromNet(String filename) =>
-      repo.fetchLyrics(filename);
+  Future<Map<String, dynamic>> fetchFromNet(String filename) async {
+    final store = FileStorageRepo(filename: filename);
+    final lyrics = repo.fetchLyrics(filename);
+    await store.save(filename);
+    return lyrics;
+  }
 
-  Future<Map<String, dynamic>?> _fetchFromDb(IStorage storage) async {
+  Future<Map<String, dynamic>?> fetchFromDb(IStorage storage) async {
     final res = await storage.fetch();
     return res as Map<String, dynamic>?;
   }
 
   Future<Map<String, dynamic>> fetchLyrics(String filename) async {
     final store = FileStorageRepo(filename: filename);
-    final res = await _fetchFromDb(store);
+    final res = await fetchFromDb(store);
     if (res != null) return res;
 
-    final lyrics = await _fetchFromNet(filename);
-    await store.save(filename);
-    return lyrics;
+    return fetchFromNet(filename);
   }
 }

@@ -16,7 +16,11 @@ class FetchContentInteractor {
     store = FileStorageRepo(filename: filename);
   }
 
-  Future<List> fetchContentFromNet() => repo.fetchContent();
+  Future<List> fetchContentFromNet() async {
+    final content = await repo.fetchContent();
+    await store.save(jsonEncode(content));
+    return content;
+  }
 
   Future<List?> fetchContentFromDb() async {
     final res = await store.fetch();
@@ -24,9 +28,11 @@ class FetchContentInteractor {
     return jsonDecode(res) as List;
   }
 
-  fetchContent() async {
+  Future<List> fetchContent() async {
+    final cached = await fetchContentFromDb();
+    if (cached != null) return cached;
+
     final content = await fetchContentFromNet();
-    await store.save(jsonEncode(content));
     return content;
   }
 }

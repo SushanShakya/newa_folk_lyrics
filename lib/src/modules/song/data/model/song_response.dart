@@ -1,36 +1,37 @@
 import 'dart:convert';
 
-class Song {
+class SongResponse {
   final String name;
   final String youtubeHash;
   final String thumbnail;
   final List<SongLyrics> lyrics;
 
-  Song({
+  SongResponse({
     required this.name,
     required this.youtubeHash,
     required this.thumbnail,
     required this.lyrics,
   });
 
-  Song copyWith({
+  SongResponse copyWith({
     String? name,
     String? youtubeHash,
     String? thumbnail,
     List<SongLyrics>? lyrics,
   }) =>
-      Song(
+      SongResponse(
         name: name ?? this.name,
         youtubeHash: youtubeHash ?? this.youtubeHash,
         thumbnail: thumbnail ?? this.thumbnail,
         lyrics: lyrics ?? this.lyrics,
       );
 
-  factory Song.fromJson(String str) => Song.fromMap(json.decode(str));
+  factory SongResponse.fromJson(String str) =>
+      SongResponse.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Song.fromMap(Map<String, dynamic> json) => Song(
+  factory SongResponse.fromMap(Map<String, dynamic> json) => SongResponse(
         name: json["name"],
         youtubeHash: json["youtube_hash"],
         thumbnail: json["thumbnail"],
