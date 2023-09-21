@@ -1,50 +1,58 @@
 [
   {
-    "name": "Chanta G Napla Weh Ghantaghar ya kwa",
+    "name": "Sirsaya hegu",
     "thumbnail": "",
     "singer": "",
-    "filename": "chanta_g_napla_weh.json"
-  },
-  {
-    "name": "Ka Nhi Maicha Mangsir Mahina",
-    "thumbnail": "",
-    "singer": "",
-    "filename": "ka_nhi_maicha_mangsir_mahina.json"
+    "filename": "sirsa_ya_hegu.json",
+    "youtube_hash": "d_EGwCry7Js"
   },
   {
     "name": "Maya re ratna",
     "thumbnail": "",
     "singer": "",
-    "filename": "maya_re_ratna.json"
-  },
-  {
-    "name": "Rajamati Kumati",
-    "thumbnail": "",
-    "singer": "",
-    "filename": "rajamati_kumati.json"
-  },
-  {
-    "name": "Sirsaya hegu",
-    "thumbnail": "",
-    "singer": "",
-    "filename": "sirsa_ya_hegu.json"
+    "filename": "maya_re_ratna.json",
+    "youtube_hash": "eI8_cr2V-k4"
   },
   {
     "name": "Thau Waila Kahne Waila",
     "thumbnail": "",
     "singer": "",
-    "filename": "thau_waila_kahne_waila.json"
-  },
-  {
-    "name": "Wane tela jeela thau kala ya tha chhen",
-    "thumbnail": "",
-    "singer": "",
-    "filename": "wane_tela_g_la_thau.json"
+    "filename": "thau_waila_kahne_waila.json",
+    "youtube_hash": "bnLhJEw282A"
   },
   {
     "name": "Wo chu gali Thwo chu gali",
     "thumbnail": "",
     "singer": "",
-    "filename": "wo_chu_gali.json"
+    "filename": "wo_chu_gali.json",
+    "youtube_hash": "Od-kjQUJrzk"
+  },
+  {
+    "name": "Wane tela jeela thau kala ya tha chhen",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "wane_tela_g_la_thau.json",
+    "youtube_hash": "VHgoMhTJfsk"
+  },
+  {
+    "name": "Ka Nhi Maicha Mangsir Mahina",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "ka_nhi_maicha_mangsir_mahina.json",
+    "youtube_hash": "gAKc3U7YXMM"
+  },
+  {
+    "name": "Rajamati Kumati",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "rajamati_kumati.json",
+    "youtube_hash": "TIxNuv1UzaM"
+  },
+  {
+    "name": "Chanta G Napla Weh Ghantaghar ya kwa",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "chanta_g_napla_weh.json",
+    "youtube_hash": "57h3zmWi2N4"
   }
 ]
