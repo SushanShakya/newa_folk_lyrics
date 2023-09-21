@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:newa_folk_lyrics/src/core/di/injector.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/views/songs_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  injectDependencies();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   runApp(const NewaFolkLyricsApp());
 }

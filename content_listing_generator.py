@@ -33,7 +33,8 @@ def create_entry(lyrics_file):
     return {
         "name": json_content['name'],
         "thumbnail": json_content['thumbnail'],
-        "singer": "" 
+        "singer": "",
+        "filename": lyrics_file
     }
 
 

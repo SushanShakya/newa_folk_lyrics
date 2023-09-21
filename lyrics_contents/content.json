@@ -1,42 +1,50 @@
 [
   {
-    "name": "Wo chu gali Thwo chu gali",
+    "name": "Chanta G Napla Weh Ghantaghar ya kwa",
     "thumbnail": "",
-    "singer": ""
+    "singer": "",
+    "filename": "chanta_g_napla_weh.json"
   },
   {
     "name": "Ka Nhi Maicha Mangsir Mahina",
     "thumbnail": "",
-    "singer": ""
+    "singer": "",
+    "filename": "ka_nhi_maicha_mangsir_mahina.json"
   },
   {
     "name": "Maya re ratna",
     "thumbnail": "",
-    "singer": ""
+    "singer": "",
+    "filename": "maya_re_ratna.json"
   },
   {
     "name": "Rajamati Kumati",
     "thumbnail": "",
-    "singer": ""
+    "singer": "",
+    "filename": "rajamati_kumati.json"
   },
   {
     "name": "Sirsaya hegu",
     "thumbnail": "",
-    "singer": ""
+    "singer": "",
+    "filename": "sirsa_ya_hegu.json"
   },
   {
     "name": "Thau Waila Kahne Waila",
     "thumbnail": "",
-    "singer": ""
+    "singer": "",
+    "filename": "thau_waila_kahne_waila.json"
   },
   {
     "name": "Wane tela jeela thau kala ya tha chhen",
     "thumbnail": "",
-    "singer": ""
+    "singer": "",
+    "filename": "wane_tela_g_la_thau.json"
   },
   {
     "name": "Wo chu gali Thwo chu gali",
     "thumbnail": "",
-    "singer": ""
+    "singer": "",
+    "filename": "wo_chu_gali.json"
   }
 ]
