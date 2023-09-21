@@ -49,7 +49,7 @@ class SongResponse {
 
 class SongLyrics {
   final String type;
-  final List<Lyrics> lyrics;
+  final List<Verse> lyrics;
 
   SongLyrics({
     required this.type,
@@ -58,7 +58,7 @@ class SongLyrics {
 
   SongLyrics copyWith({
     String? type,
-    List<Lyrics>? lyrics,
+    List<Verse>? lyrics,
   }) =>
       SongLyrics(
         type: type ?? this.type,
@@ -72,7 +72,7 @@ class SongLyrics {
 
   factory SongLyrics.fromMap(Map<String, dynamic> json) => SongLyrics(
         type: json["type"],
-        lyrics: List<Lyrics>.from(json["lyrics"].map((x) => Lyrics.fromMap(x))),
+        lyrics: List<Verse>.from(json["lyrics"].map((x) => Verse.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -81,29 +81,29 @@ class SongLyrics {
       };
 }
 
-class Lyrics {
+class Verse {
   final String name;
   final List<String> lyrics;
 
-  Lyrics({
+  Verse({
     required this.name,
     required this.lyrics,
   });
 
-  Lyrics copyWith({
+  Verse copyWith({
     String? name,
     List<String>? lyrics,
   }) =>
-      Lyrics(
+      Verse(
         name: name ?? this.name,
         lyrics: lyrics ?? this.lyrics,
       );
 
-  factory Lyrics.fromJson(String str) => Lyrics.fromMap(json.decode(str));
+  factory Verse.fromJson(String str) => Verse.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Lyrics.fromMap(Map<String, dynamic> json) => Lyrics(
+  factory Verse.fromMap(Map<String, dynamic> json) => Verse(
         name: json["name"],
         lyrics: List<String>.from(json["lyrics"].map((x) => x)),
       );

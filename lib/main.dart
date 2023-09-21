@@ -18,7 +18,7 @@ class NewaFolkLyricsApp extends StatelessWidget {
         fontFamily: "Montserrat",
       ),
       debugShowCheckedModeBanner: false,
-      home: const SongsView(),
+      home: const SongsBody(),
     );
   }
 }
