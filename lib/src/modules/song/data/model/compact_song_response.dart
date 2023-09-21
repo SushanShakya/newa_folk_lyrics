@@ -18,7 +18,7 @@ class CompactSongResponse {
   String? get thumbnailLink {
     if (thumbnail != "") return thumbnail;
     if (youtubeHash == "") return null;
-    return "https://i.ytimg.com/vi/$youtubeHash/maxresdefault.jpg";
+    return "https://img.youtube.com/vi/$youtubeHash/0.jpg";
   }
 
   CompactSongResponse copyWith({

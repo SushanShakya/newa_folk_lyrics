@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newa_folk_lyrics/src/core/di/locator.dart';
 import 'package:newa_folk_lyrics/src/modules/common/gui/components/image_component.dart';
 import 'package:newa_folk_lyrics/src/modules/common/gui/components/tap_effect.dart';
+import 'package:newa_folk_lyrics/src/modules/common/gui/views/video_player.dart';
 
 import 'package:newa_folk_lyrics/src/modules/song/data/model/compact_song_response.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/adapter/lyrics_adapter.dart';
@@ -119,47 +120,62 @@ class _LyricsViewState extends State<LyricsView> {
                                           ],
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          bottom: 10.0,
-                                          left: 16,
-                                        ),
-                                        child: TapEffect(
-                                          onTap: () {
-                                            launchURL(
-                                              'https://youtu.be/${widget.song.youtubeHash}',
-                                            );
-                                          },
-                                          child: Container(
-                                            height: 60,
-                                            width: 60,
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.white,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Colors.grey,
-                                                  blurRadius: 5,
-                                                  spreadRadius: 2,
-                                                ),
-                                              ],
-                                            ),
-                                            child: const Icon(
-                                              FontAwesomeIcons.youtube,
-                                              size: 30,
-                                              color: Color(0xffcd201f),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(top: 16),
-                              child: BackButton(),
+                            Center(
+                              child: TapEffect(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: Center(
+                                          child: VideoPlayer(
+                                            videoId: widget.song.youtubeHash,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Stack(
+                                  children: [
+                                    Positioned.fill(
+                                      child: Center(
+                                        child: Container(
+                                          height: 30,
+                                          width: 30,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    const Icon(
+                                      FontAwesomeIcons.youtube,
+                                      size: 50,
+                                      color: Color(0xffcd201f),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 48, left: 16),
+                              child: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4),
+                                  color: Colors.white,
+                                ),
+                                child: const BackButton(),
+                              ),
                             ),
                           ],
                         ),
