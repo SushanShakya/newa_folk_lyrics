@@ -1,16 +1,17 @@
-# newa_folk_lyrics
+# Newa Folk Lyrics
 
-A new Flutter project.
+> App to display lyrics of Newari folk songs
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Contributing
 
-A few resources to get you started if this is your first Flutter project:
+You can add newari songs to this repo by creating a file inside `lyrics_raw` folder.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The format for the song is given below :
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<pre>
+Title Here, YoutubeHash Here, Thumbnail Here
+------ Paste Song Here -------
+</pre>
+
+Follow the examples in the existing lyrics

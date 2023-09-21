@@ -52,7 +52,7 @@ def create_lyrics_content(filename):
 
     raw_content = ""
 
-    with open(path) as fp:
+    with open(path, encoding="utf8") as fp:
         raw_content = fp.read()
     
     data = raw_content.split("\n")
