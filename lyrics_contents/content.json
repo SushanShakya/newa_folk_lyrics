@@ -1,38 +1,17 @@
 [
   {
-    "name": "Sirsaya hegu",
+    "name": "Chanta G Napla Weh Ghantaghar ya kwa",
     "thumbnail": "",
     "singer": "",
-    "filename": "sirsa_ya_hegu.json",
-    "youtube_hash": "d_EGwCry7Js"
+    "filename": "chanta_g_napla_weh.json",
+    "youtube_hash": "57h3zmWi2N4"
   },
   {
-    "name": "Maya re ratna",
+    "name": "Dyo Yata Sinha Swa",
     "thumbnail": "",
     "singer": "",
-    "filename": "maya_re_ratna.json",
-    "youtube_hash": "eI8_cr2V-k4"
-  },
-  {
-    "name": "Thau Waila Kahne Waila",
-    "thumbnail": "",
-    "singer": "",
-    "filename": "thau_waila_kahne_waila.json",
-    "youtube_hash": "bnLhJEw282A"
-  },
-  {
-    "name": "Wo chu gali Thwo chu gali",
-    "thumbnail": "",
-    "singer": "",
-    "filename": "wo_chu_gali.json",
-    "youtube_hash": "Od-kjQUJrzk"
-  },
-  {
-    "name": "Wane tela jeela thau kala ya tha chhen",
-    "thumbnail": "",
-    "singer": "",
-    "filename": "wane_tela_g_la_thau.json",
-    "youtube_hash": "VHgoMhTJfsk"
+    "filename": "dyo_yata_sinha_swa.json",
+    "youtube_hash": "FgRC0Aq_9T4"
   },
   {
     "name": "Ka Nhi Maicha Mangsir Mahina",
@@ -42,6 +21,13 @@
     "youtube_hash": "gAKc3U7YXMM"
   },
   {
+    "name": "Maya re ratna",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "maya_re_ratna.json",
+    "youtube_hash": "eI8_cr2V-k4"
+  },
+  {
     "name": "Rajamati Kumati",
     "thumbnail": "",
     "singer": "",
@@ -49,10 +35,38 @@
     "youtube_hash": "TIxNuv1UzaM"
   },
   {
-    "name": "Chanta G Napla Weh Ghantaghar ya kwa",
+    "name": "Sirsaya hegu",
     "thumbnail": "",
     "singer": "",
-    "filename": "chanta_g_napla_weh.json",
-    "youtube_hash": "57h3zmWi2N4"
+    "filename": "sirsa_ya_hegu.json",
+    "youtube_hash": "d_EGwCry7Js"
+  },
+  {
+    "name": "Thau Waila Kahne Waila",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "thau_waila_kahne_waila.json",
+    "youtube_hash": "bnLhJEw282A"
+  },
+  {
+    "name": "Thwo joban changu lagi kha",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "thwo_joban_changu_lagi_kha.json",
+    "youtube_hash": "2LLfx-2rRTY"
+  },
+  {
+    "name": "Wane tela jeela thau kala ya tha chhen",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "wane_tela_g_la_thau.json",
+    "youtube_hash": "VHgoMhTJfsk"
+  },
+  {
+    "name": "Wo chu gali Thwo chu gali",
+    "thumbnail": "",
+    "singer": "",
+    "filename": "wo_chu_gali.json",
+    "youtube_hash": "Od-kjQUJrzk"
   }
 ]
