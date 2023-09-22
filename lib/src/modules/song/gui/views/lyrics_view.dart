@@ -57,6 +57,11 @@ class _LyricsViewState extends State<LyricsView> {
     );
   }
 
+  Future<void> onRefresh(BuildContext context) async {
+    cubit.forceFetchLyrics(widget.song.filename);
+    await Future.delayed(const Duration(seconds: 1));
+  }
+
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height / 2;
@@ -68,145 +73,160 @@ class _LyricsViewState extends State<LyricsView> {
           final lyricsTypes = state.data.lyrics;
           return DefaultTabController(
             length: lyricsTypes.length,
-            child: RefreshIndicator(
-              onRefresh: () async {
-                cubit.forceFetchLyrics(widget.song.filename);
-                await Future.delayed(const Duration(seconds: 1));
-              },
-              child: NestedScrollView(
-                headerSliverBuilder: (c, b) {
-                  return [
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: h,
-                        child: Stack(
-                          children: [
-                            Positioned.fill(
-                              child: buildHeaderBackground(context),
-                            ),
-                            Positioned.fill(
-                              child: buildHeaderObscure(context),
-                            ),
-                            Positioned.fill(
-                              child: Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              widget.song.name,
-                                              style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 24,
-                                              ),
-                                            ),
-                                            Text(
-                                              widget.song.singer,
-                                              maxLines: 1,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: TapEffect(
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) => GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        child: Center(
-                                          child: VideoPlayer(
-                                            videoId: widget.song.youtubeHash,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Stack(
+            child: NestedScrollView(
+              headerSliverBuilder: (c, b) {
+                return [
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: h,
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: buildHeaderBackground(context),
+                          ),
+                          Positioned.fill(
+                            child: buildHeaderObscure(context),
+                          ),
+                          Positioned.fill(
+                            child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Positioned.fill(
-                                      child: Center(
-                                        child: Container(
-                                          height: 30,
-                                          width: 30,
-                                          color: Colors.white,
-                                        ),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            widget.song.name,
+                                            style: const TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 24,
+                                            ),
+                                          ),
+                                          Text(
+                                            widget.song.singer,
+                                            maxLines: 1,
+                                            style: const TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                    const Icon(
-                                      FontAwesomeIcons.youtube,
-                                      size: 50,
-                                      color: Color(0xffcd201f),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 48, left: 16),
-                              child: Container(
-                                height: 40,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  color: Colors.white,
-                                ),
-                                child: const BackButton(),
+                          ),
+                          Center(
+                            child: TapEffect(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: Center(
+                                        child: VideoPlayer(
+                                          videoId: widget.song.youtubeHash,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Stack(
+                                children: [
+                                  Positioned.fill(
+                                    child: Center(
+                                      child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  const Icon(
+                                    FontAwesomeIcons.youtube,
+                                    size: 50,
+                                    color: Color(0xffcd201f),
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 48, left: 16),
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: Colors.white,
+                              ),
+                              child: const BackButton(),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 48, right: 16),
+                              child: TapEffect(
+                                onTap: () => onRefresh(context),
+                                child: Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    color: Colors.white,
+                                  ),
+                                  child: const Icon(
+                                    FontAwesomeIcons.arrowsRotate,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    SliverAppBar(
-                      automaticallyImplyLeading: false,
-                      pinned: true,
-                      backgroundColor: Colors.white,
-                      elevation: 0,
-                      title: TabBar(
-                        labelColor: Colors.black,
-                        tabs:
-                            lyricsTypes.map((e) => Tab(text: e.type)).toList(),
-                      ),
+                  ),
+                  SliverAppBar(
+                    automaticallyImplyLeading: false,
+                    pinned: true,
+                    backgroundColor: Colors.white,
+                    elevation: 0,
+                    title: TabBar(
+                      labelColor: Colors.black,
+                      tabs: lyricsTypes.map((e) => Tab(text: e.type)).toList(),
                     ),
-                  ];
-                },
-                body: TabBarView(
-                  children: lyricsTypes
-                      .map(
-                        (e) => LyricsFragment(
-                          lyrics: e.lyrics
-                              .map(
-                                (e) => adapter.convert(e),
-                              )
-                              .toList(),
-                        ),
-                      )
-                      .toList(),
-                ),
+                  ),
+                ];
+              },
+              body: TabBarView(
+                children: lyricsTypes
+                    .map(
+                      (e) => LyricsFragment(
+                        onRefresh: () => onRefresh(context),
+                        lyrics: e.lyrics
+                            .map(
+                              (e) => adapter.convert(e),
+                            )
+                            .toList(),
+                      ),
+                    )
+                    .toList(),
               ),
             ),
           );

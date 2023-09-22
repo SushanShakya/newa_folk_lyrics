@@ -7,28 +7,33 @@ import 'package:newa_folk_lyrics/src/modules/song/gui/view_models/lyrics_view_mo
 
 class LyricsFragment extends StatelessWidget {
   final List<VerseViewModel> lyrics;
+  final Future<void> Function() onRefresh;
 
   const LyricsFragment({
     Key? key,
     required this.lyrics,
+    required this.onRefresh,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 30),
-            ...lyrics.map(
-              (e) => Padding(
-                padding: const EdgeInsets.only(bottom: 30.0),
-                child: VerseWidget(verse: e),
+    return RefreshIndicator(
+      onRefresh: onRefresh,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 30),
+              ...lyrics.map(
+                (e) => Padding(
+                  padding: const EdgeInsets.only(bottom: 30.0),
+                  child: VerseWidget(verse: e),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
