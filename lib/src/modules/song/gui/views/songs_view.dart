@@ -3,6 +3,7 @@ import 'package:newa_folk_lyrics/src/core/di/locator.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/adapter/song_adapter.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/components/songs_listing_widget.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/cubits/content_cubit.dart';
+import 'package:newa_folk_lyrics/src/modules/song/gui/views/fragments/songs_grid_fragment.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/views/lyrics_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:warped_bloc/defaults/default_builder.dart';
@@ -15,11 +16,13 @@ class SongsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => g<ContentCubit>()..fetchContent(),
-      child: const SongsBody(),
+      // child: const SongsBody(),
+      child: const SongsGridFragment(),
     );
   }
 }
 
+@Deprecated("Use SongsGridFragment")
 class SongsBody extends StatelessWidget {
   const SongsBody({super.key});
 
@@ -35,7 +38,7 @@ class SongsBody extends StatelessWidget {
         ),
         Container(
           color: Colors.white.withOpacity(0.4),
-        )
+        ),
       ],
     );
   }
