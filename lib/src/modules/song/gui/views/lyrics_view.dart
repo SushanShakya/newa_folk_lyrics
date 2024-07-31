@@ -2,9 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newa_folk_lyrics/src/core/di/locator.dart';
+import 'package:newa_folk_lyrics/src/modules/common/gui/components/image_component.dart';
 
 import 'package:newa_folk_lyrics/src/modules/song/data/model/compact_song_response.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/adapter/lyrics_adapter.dart';
+import 'package:newa_folk_lyrics/src/modules/song/gui/cubits/internet_check_cubit.dart';
 import 'package:newa_folk_lyrics/src/modules/song/gui/cubits/lyrics_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:warped_bloc/defaults/default_builder.dart';
@@ -28,17 +30,25 @@ class LyricsView extends StatefulWidget {
 class _LyricsViewState extends State<LyricsView> {
   late LyricsCubit cubit;
   late LyricsAdapter adapter;
+  late InternetCheckCubit internetCheckCubit;
 
   @override
   void initState() {
     super.initState();
     cubit = g()..fetchLyrics(widget.song.filename);
+    internetCheckCubit = InternetCheckCubit()..hasNetwork();
     adapter = LyricsAdapter();
+  }
+
+  Widget buildBg(BuildContext context) {
+    return Hero(
+      tag: widget.song.youtubeHash,
+      child: ImageComponent.createImage(image: widget.song.thumbnailLink),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final h = MediaQuery.of(context).size.height / 2;
     return Scaffold(
       body: BlocBuilder<LyricsCubit, BlocState>(
         bloc: cubit,
@@ -74,8 +84,16 @@ class _LyricsViewState extends State<LyricsView> {
                   ),
                   AspectRatio(
                     aspectRatio: 16 / 9,
-                    child: VideoPlayer(
-                      videoId: widget.song.youtubeHash,
+                    child: BlocBuilder<InternetCheckCubit, bool>(
+                      bloc: internetCheckCubit,
+                      builder: (context, hasInternet) {
+                        if (!hasInternet) {
+                          return buildBg(context);
+                        }
+                        return VideoPlayer(
+                          videoId: widget.song.youtubeHash,
+                        );
+                      },
                     ),
                   ),
                   TabBar(

@@ -81,6 +81,7 @@ class _SongsGridFragmentState extends State<SongsGridFragment> {
                                         width: w,
                                         child: SongWidget(
                                           size: w,
+                                          tag: data.youtubeHash,
                                           data: adapter.convert(data),
                                         ),
                                       ),
@@ -153,10 +154,12 @@ class _SongsGridFragmentState extends State<SongsGridFragment> {
 class SongWidget extends StatelessWidget {
   final double size;
   final SongViewModel data;
+  final String tag;
   const SongWidget({
     Key? key,
     required this.size,
     required this.data,
+    required this.tag,
   }) : super(key: key);
 
   @override
@@ -177,9 +180,12 @@ class SongWidget extends StatelessWidget {
             borderOnForeground: true,
             child: (data.image == null)
                 ? null
-                : CachedNetworkImage(
-                    imageUrl: data.image!,
-                    fit: BoxFit.cover,
+                : Hero(
+                    tag: tag,
+                    child: CachedNetworkImage(
+                      imageUrl: data.image!,
+                      fit: BoxFit.cover,
+                    ),
                   ),
           ),
         ),
