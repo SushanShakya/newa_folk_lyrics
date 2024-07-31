@@ -71,7 +71,7 @@ class VerseWidget extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 18,
                 fontFamily: "Poppins",
-                color: Colors.black54,
+                color: Colors.black,
               ),
             ),
           ),

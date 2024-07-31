@@ -21,13 +21,10 @@ class ImageComponent {
     String? image,
   }) {
     if (image == null) {
-      return CachedNetworkImage(
-        imageUrl: image!,
-        fit: BoxFit.cover,
-      );
+      return Container();
     }
-    return Image.network(
-      image,
+    return CachedNetworkImage(
+      imageUrl: image,
       fit: BoxFit.cover,
     );
   }
