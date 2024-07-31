@@ -2,7 +2,7 @@ name: newa_folk_lyrics
 description: A new Flutter project.
 publish_to: "none"
 
-version: 1.0.0+2
+version: 2.0.0+8000
 
 environment:
   sdk: ">=3.0.6 <4.0.0"
