@@ -1,8 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:newa_folk_lyrics/src/core/di/locator.dart';
+import 'package:newa_folk_lyrics/src/modules/ads/data/repo/ad_service.dart';
 import 'package:newa_folk_lyrics/src/modules/common/gui/components/squircle_border.dart';
 import 'package:newa_folk_lyrics/src/modules/common/gui/components/tap_effect.dart';
 import 'package:newa_folk_lyrics/src/modules/song/data/model/compact_song_response.dart';
@@ -26,10 +31,18 @@ class SongsGridFragment extends StatefulWidget {
 class _SongsGridFragmentState extends State<SongsGridFragment> {
   late SongSearchCubit cubit;
 
+  BannerAd? bannerAd;
+
   @override
   void initState() {
     super.initState();
     cubit = SongSearchCubit();
+    scheduleMicrotask(() {
+      bannerAd = g<AdService>().showHomeBanner(
+        MediaQuery.of(context).size.width.toInt(),
+      );
+      setState(() {});
+    });
   }
 
   @override
@@ -43,6 +56,18 @@ class _SongsGridFragmentState extends State<SongsGridFragment> {
             Positioned.fill(
               child: Column(
                 children: [
+                  (bannerAd == null)
+                      ? const SizedBox(
+                          height: 70.0,
+                        )
+                      : Container(
+                          color: Colors.transparent,
+                          height: bannerAd!.size.height.toDouble(),
+                          width: bannerAd!.size.width.toDouble(),
+                          child: AdWidget(
+                            ad: bannerAd!,
+                          ),
+                        ),
                   _buildSearchbar(),
                   Expanded(
                     child: BlocConsumer<ContentCubit, BlocState>(
