@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:newa_folk_lyrics/ad_ids.dart';
 
 class AdService {
   // String get bannerId => "ca-app-pub-3940256099942544/6300978111";
-  String get bannerId => "ca-app-pub-4317773806707889/6628993380";
+  String get bannerId => AdIds.bannerId;
 
   BannerAd _showBannerAd(int bannerWidth, String bannerId) {
     final bannerAd = BannerAd(
